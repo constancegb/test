@@ -19,14 +19,18 @@
 function closestToZero(ts) {
   if (ts.length === 0) return 0;
 
-  let closestToZero = ts[0];
+  let closestToZero = Math.abs(ts[0]);
   ts.forEach(temp => {
-    if (Math.abs(temp) < closestToZero) {
+    if (Math.abs(temp) < Math.abs(closestToZero)) {
       closestToZero = temp;
-    } else if (Math.abs(temp) === closestToZero) {
+    } else if (Math.abs(temp) === Math.abs(closestToZero)) {
       closestToZero = Math.max(closestToZero, temp);
     }
   });
 
+  if (Math.abs(ts[0]) === Math.abs(closestToZero)) return Math.max(ts[0], closestToZero);
+
   return closestToZero;
 }
+
+closestToZero(ts);
